@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetDataDistrict">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="districtId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataDistrictResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDataDistrictResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDataDistrictSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataDistrict" />
+  </wsdl:message>
+  <wsdl:message name="GetDataDistrictSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataDistrictResponse" />
+  </wsdl:message>
+  <wsdl:portType name="retriveinformationSoap">
+    <wsdl:operation name="GetDataDistrict">
+      <wsdl:input message="tns:GetDataDistrictSoapIn" />
+      <wsdl:output message="tns:GetDataDistrictSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="retriveinformationSoap" type="tns:retriveinformationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDataDistrict">
+      <soap:operation soapAction="http://tempuri.org/GetDataDistrict" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="retriveinformationSoap12" type="tns:retriveinformationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDataDistrict">
+      <soap12:operation soapAction="http://tempuri.org/GetDataDistrict" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="retriveinformation">
+    <wsdl:port name="retriveinformationSoap" binding="tns:retriveinformationSoap">
+      <soap:address location="http://localhost:57410/retriveinformation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="retriveinformationSoap12" binding="tns:retriveinformationSoap12">
+      <soap12:address location="http://localhost:57410/retriveinformation.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

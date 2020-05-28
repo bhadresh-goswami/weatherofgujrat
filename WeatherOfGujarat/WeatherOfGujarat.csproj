@@ -44,6 +44,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,14 +72,61 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\GetDataServiceRef\retriveinformation.disco" />
+    <None Include="Connected Services\GetDataServiceRef\configuration91.svcinfo" />
+    <None Include="Connected Services\GetDataServiceRef\configuration.svcinfo" />
+    <None Include="Connected Services\GetDataServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Content\css\dvxCharts.chart.css" />
+    <Content Include="Content\css\dvxCharts.chart.min.css" />
+    <Content Include="Content\css\KBmapmarkers.css" />
+    <Content Include="Content\css\styles.css" />
+    <Content Include="Content\images\map-marker.svg" />
+    <Content Include="Content\images\marker.png" />
+    <Content Include="Content\js\dvxCharts.chart.min.js" />
+    <Content Include="Content\js\KBmapmarkers.js" />
+    <Content Include="Content\js\KBmapmarkersCords.js" />
+    <Content Include="default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Content\images\g1.jpg" />
+    <Content Include="readdata.aspx" />
+    <Content Include="retriveinformation.asmx" />
     <Content Include="Web.config" />
+    <None Include="Connected Services\GetDataServiceRef\retriveinformation.wsdl" />
+    <Content Include="Connected Services\GetDataServiceRef\WeatherOfGujarat.GetDataServiceRef.GetDataDistrictResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\GetDataServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="readdata.aspx.cs">
+      <DependentUpon>readdata.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="readdata.aspx.designer.cs">
+      <DependentUpon>readdata.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="retriveinformation.asmx.cs">
+      <DependentUpon>retriveinformation.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -88,6 +140,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\GetDataServiceRef\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
