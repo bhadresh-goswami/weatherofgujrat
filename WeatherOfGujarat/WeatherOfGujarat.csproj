@@ -85,9 +85,14 @@
     <Content Include="Content\css\styles.css" />
     <Content Include="Content\images\map-marker.svg" />
     <Content Include="Content\images\marker.png" />
+    <Content Include="Content\images\talukas\t2.png" />
+    <Content Include="Content\images\talukas\t72.png" />
+    <Content Include="Content\images\talukas\t90.png" />
+    <Content Include="Content\js\Chart.min.js" />
     <Content Include="Content\js\dvxCharts.chart.min.js" />
     <Content Include="Content\js\KBmapmarkers.js" />
     <Content Include="Content\js\KBmapmarkersCords.js" />
+    <Content Include="Content\js\utils.js" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Content\images\g1.jpg" />
@@ -130,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

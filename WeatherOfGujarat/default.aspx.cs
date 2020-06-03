@@ -37,7 +37,7 @@ namespace WeatherOfGujarat
 
             ddlDistrict.DataSource = dt;
             ddlDistrict.DataTextField = "District_Name";
-            ddlDistrict.DataValueField = "District_ID";
+            ddlDistrict.DataValueField = "id";
             ddlDistrict.DataBind();
 
             ddlDistrict.Items.Insert(0, "Select District");

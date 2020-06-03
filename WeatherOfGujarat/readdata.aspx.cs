@@ -23,14 +23,21 @@ namespace WeatherOfGujarat
 
         }
         [WebMethod()]
-        public static List<Dictionary<string, string>> GetDataDistrict(int districtId)
+        public static List<Dictionary<string, string>> GetDataTalukas(int Id)
         {
+            string query = "";
             try
             {
+                DateTime now = DateTime.Now;
+                var startDate = new DateTime(now.Year, now.Month-1, 1);
+                var endDate = startDate.AddMonths(1).AddDays(-1).ToString("yyyy-M-dd");
+                var strStartDate = startDate.ToString("yyyy-M-dd");
                 con = new SqlConnection(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
 
                 List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();
-                SqlDataAdapter adp = new SqlDataAdapter("select * from District_Weather_Details inner join District_Master on District_Master.District_ID = District_Weather_Details.District_ID where District_Master.District_ID=" + districtId, con);
+                //query = "select * from Taluka_Weather_Details  where Taluka_ID=" + Id + " and Created_Date between '" + strStartDate + "' and '" + endDate + "' order by Created_Date";
+                query = "select * from Taluka_Weather_Details  where Taluka_ID=" + Id + " order by Created_Date";
+                SqlDataAdapter adp = new SqlDataAdapter(query, con);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 string json = "";
@@ -58,20 +65,20 @@ namespace WeatherOfGujarat
             {
                 List<Dictionary<string, string>> vs = new List<Dictionary<string, string>>();
                 Dictionary<string, string> d = new Dictionary<string, string>();
-                d["err"] = ex.Message;
+                d["err"] = ex.Message + "\n"+query;
                 vs.Add(d);
                 return vs;
             }
         }
         [WebMethod()]
-        public static List<Dictionary<string, string>> GetDataTaluka(int talukaId)
+        public static List<Dictionary<string, string>> GetTaluka(int districtId)
         {
             try
             {
                 con = new SqlConnection(ConfigurationManager.ConnectionStrings["conStr"].ConnectionString);
 
                 List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();
-                SqlDataAdapter adp = new SqlDataAdapter("select * from Taluka_Weather_Details inner join Taluka_Master on Taluka_Master.Taluka_ID = Taluka_Weather_Details.Taluka_ID where Taluka_Master.Taluka_ID=" + talukaId, con);
+                SqlDataAdapter adp = new SqlDataAdapter("select * from Taluka_Master where District_Auto_ID=" + districtId, con);
                 DataTable dt = new DataTable();
                 adp.Fill(dt);
                 string json = "";
